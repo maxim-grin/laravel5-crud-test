@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Car;
 use App\Repositories\CarRepository;
+use Auth;
 
 class CarController extends Controller {
 
@@ -43,6 +44,7 @@ class CarController extends Controller {
         $car->name = $request->name;
         $car->price = $request->price;
         $car->status = $request->status;
+        $car->user_id = Auth::user()->id;
         $car->save();
 
         return redirect('cars');
