@@ -18,6 +18,10 @@ class CreateCarsTable extends Migration {
             $table->double('price', 10, 2);
             $table->enum('status', ['sold', 'available']);
             $table->timestamps();
+            $table->foreign('user_id')
+                    ->references('id')
+                    ->on('users')
+                    ->onDelete('cascade');
         });
     }
 
